@@ -20,7 +20,7 @@
 ```
 3. Well that's all now you can get a difference between your previous vim and recent vim.
 
-<img width="1920" height="1046" alt="image" src="https://github.com/user-attachments/assets/e4279d6e-4f5f-4174-9064-3841374f0a30" />
+<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/60022019-55ac-445b-90ea-9aca34c04eb5" />
 
 **Dependency**
     - Fzf
