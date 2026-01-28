@@ -2,6 +2,9 @@
 set number
 set relativenumber
 
+" This is for the smart bar in under section
+set laststatus=2
+
 " This is for smart tab and backing
 filetype plugin indent on
 set expandtab
