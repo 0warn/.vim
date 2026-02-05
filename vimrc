@@ -7,4 +7,4 @@ source ~/.vim/plugins/fzf.vim
 source ~/.vim/plugins/mod_ff.vim
 
 " ===== Color =====
-source ~/.vim/colors/murphy.vim
+source ~/.vim/colors/pablo.vim

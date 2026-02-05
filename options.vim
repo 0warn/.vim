@@ -52,3 +52,6 @@ set formatoptions+=cro
 " Highlight matching brackets
 set showmatch
 set matchtime=2
+
+" Mouse settings
+set mouse=a
