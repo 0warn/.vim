@@ -20,7 +20,8 @@
 ```
 3. Well that's all now you can get a difference between your previous vim and recent vim.
 
-<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/60022019-55ac-445b-90ea-9aca34c04eb5" />
+<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/fb86baad-26b4-47e9-ae25-11decfd19817" />
+<img width="1920" height="1047" alt="image" src="https://github.com/user-attachments/assets/ff84edc8-74cb-4b12-aa24-430d59c1f167" />
 
 **Dependency**
     - Fzf
@@ -44,6 +45,9 @@ Well it is actually a normal vim with some tweak and other plugin mixture.
 3. Syntax highlighting.
 4. Auto tab and intelligent backspace.
 5. Intelligent file back keybind.
+6. New colorfull mode added
+7. Coursor line added
+8. spliting mode added with new keybind
 
 <h2 align="center">Keybinds....</h2>
 
@@ -51,6 +55,10 @@ Well it is actually a normal vim with some tweak and other plugin mixture.
 2. `space + f` -> for :Files mode (fzf)
 3. `space + b` -> for :Buffer mode (fzf)
 4. `space + h` -> for :History mode (fzf)
+5. `ctrl + v` -> for vertical split.
+6. `ctrl + s` -> for split in half by potrait mode.
+7. `ctrl + h/j/k/l` -> move between yout splited tabs (**left/down/up/rigt**)
+8. `space + ESC` -> clear search highlight
 
 --- 
 
