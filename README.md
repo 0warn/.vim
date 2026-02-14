@@ -72,21 +72,21 @@ This section outlines the keybindings available in your Vim configuration. `<lea
     *   `:TOhtml` -> Convert the current buffer to an HTML file (useful for sharing code with syntax highlighting).
 
 4.  **Spell Checking Keybindings** (only active if spell checking is enabled - see Advanced Features):
-    *   `<leader>sn` -> Move to the next misspelled word.
-    *   `<leader>sp` -> Move to the previous misspelled word.
-    *   `<leader>sa` -> Add the word under the cursor to the spell file.
-    *   `<leader>sw` -> Mark the word under the cursor as a spelling mistake.
-    *   `<leader>ss` -> Show spelling suggestions for the word under the cursor.
+    *   `space + sn` -> Move to the next misspelled word.
+    *   `space + sp` -> Move to the previous misspelled word.
+    *   `space + sa` -> Add the word under the cursor to the spell file.
+    *   `space + sw` -> Mark the word under the cursor as a spelling mistake.
+    *   `space + ss` -> Show spelling suggestions for the word under the cursor.
 
 5.  **Competitive Programming Keybindings**:
     *   **Compile and Run**:
-        *   `<leader>c` -> Compiles the current file (C++, Java). Python is interpreted, so it will just show a message.
-        *   `<leader>r` -> Runs the compiled/interpreted program in a new terminal window.
-        *   `<leader>cr` -> Compiles (if applicable) and then runs the program.
+        *   `space + c` -> Compiles the current file (C++, Java). Python is interpreted, so it will just show a message.
+        *   `space + r` -> Runs the compiled/interpreted program in a new terminal window.
+        *   `space + cr` -> Compiles (if applicable) and then runs the program.
     *   **Test Case Handling**:
-        *   `<leader>ti` -> Creates an empty `input.txt` file in the current directory.
-        *   `<leader>te` -> Creates an empty `expected_output.txt` file in the current directory.
-        *   `<leader>td` -> Runs your program with `input.txt` as stdin, saves the output to `output.txt`, and opens a diff view with `expected_output.txt`.
+        *   `space + ti` -> Creates an empty `input.txt` file in the current directory.
+        *   `space + te` -> Creates an empty `expected_output.txt` file in the current directory.
+        *   `space + td` -> Runs your program with `input.txt` as stdin, saves the output to `output.txt`, and opens a diff view with `expected_output.txt`.
 
 ---
 
@@ -111,27 +111,27 @@ This configuration has been enhanced with several advanced features inspired by 
 - **Spell Checking**:
     - To enable spell checking, uncomment the `set spell` and `set spelllang=en_us` lines in `options.vim`.
     - Once enabled, you can use the following keybindings:
-        - `<leader>sn`: Move to the next misspelled word.
-        - `<leader>sp`: Move to the previous misspelled word.
-        - `<leader>sa`: Add the word under the cursor to the spell file.
-        - `<leader>sw`: Mark the word under the cursor as a spelling mistake.
-        - `<leader>ss`: Show spelling suggestions for the word under the cursor.
+        - `space + sn`: Move to the next misspelled word.
+        - `space + sp`: Move to the previous misspelled word.
+        - `space + sa`: Add the word under the cursor to the spell file.
+        - `space + sw`: Mark the word under the cursor as a spelling mistake.
+        - `space + ss`: Show spelling suggestions for the word under the cursor.
 
 - **Code Templates for Competitive Programming**:
     - Templates are available for C++ (`.cpp`), Python (`.py`), Java (`.java`), C (`.c`), Golang (`.go`), Rust (`.rs`), and Bash (`.sh`).
     - To use, simply create a new file with the corresponding extension (e.g., `:e main.cpp` or `:e script.sh`). The template will be automatically inserted.
 
-- **Compile and Run (`<leader>c`, `<leader>r`, `<leader>cr`)**:
+- **Compile and Run (`space + c`, `space + r`, `space + cr`)**:
     - These keybindings are available in normal mode.
-    - `<leader>c`: Compiles the current file (C++, Java). For Python, it will just show a message as Python is interpreted.
-    - `<leader>r`: Runs the compiled/interpreted program in a new terminal window.
-    - `<leader>cr`: Compiles (if applicable) and then runs the program.
+    - `space + c`: Compiles the current file (C++, Java). For Python, it will just show a message as Python is interpreted.
+    - `space + r`: Runs the compiled/interpreted program in a new terminal window.
+    - `space + cr`: Compiles (if applicable) and then runs the program.
 
-- **Test Case Handling (`<leader>ti`, `<leader>te`, `<leader>td`)**:
+- **Test Case Handling (`space + ti`, `space + te`, `space + td`)**:
     - These keybindings are available in normal mode.
-    - `<leader>ti`: Creates an empty `input.txt` file in the current directory for providing custom test inputs. Open this file to input your test data.
-    - `<leader>te`: Creates an empty `expected_output.txt` file for storing the expected output of a test case. Open this file to paste or type the correct output.
-    - `<leader>td`: Runs your program with `input.txt` as stdin, saves the output to `output.txt`, and then opens a diff view between `output.txt` and `expected_output.txt`. This allows you to quickly compare your program's output with the expected output.
+    - `space + ti`: Creates an empty `input.txt` file in the current directory for providing custom test inputs. Open this file to input your test data.
+    - `space + te`: Creates an empty `expected_output.txt` file for storing the expected output of a test case. Open this file to paste or type the correct output.
+    - `space + td`: Runs your program with `input.txt` as stdin, saves the output to `output.txt`, and then opens a diff view between `output.txt` and `expected_output.txt`. This allows you to quickly compare your program's output with the expected output.
 
 - **Debugging with `termdebug`**:
     - Vim's built-in terminal debugger is now enabled.

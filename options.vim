@@ -46,6 +46,7 @@ set undodir=~/.vim/undo//
 
 " keep a backup file (restore to previous version)
 set backup
+set backupdir=~/.vim/backup//
 
 " Split behavior
 set splitbelow
