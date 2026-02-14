@@ -52,14 +52,41 @@ Well it is actually a normal vim with some tweak and other plugin mixture.
 
 <h2 align="center">Keybinds....</h2>
 
-1. `space + cd` -> for :Ex mode (vim)
-2. `space + f` -> for :Files mode (fzf)
-3. `space + b` -> for :Buffers mode (fzf)
-4. `space + h` -> for :History mode (fzf)
-5. `ctrl + v` -> for vertical split.
-6. `ctrl + s` -> for split in half by potrait mode.
-7. `ctrl + h/j/k/l` -> move between yout splited tabs (**left/down/up/rigt**)
-8. `space + ESC` -> clear search highlight
+This section outlines the keybindings available in your Vim configuration. `<leader>` is mapped to `space`.
+
+1.  **General Navigation & FZF**:
+    *   `space + cd` -> for `:Ex` mode (Vim's file explorer)
+    *   `space + f` -> for `:Files` mode (FZF fuzzy file search)
+    *   `space + b` -> for `:Buffers` mode (FZF fuzzy buffer search)
+    *   `space + h` -> for `:History` mode (FZF command history search)
+    *   `ctrl + v` -> for vertical split.
+    *   `ctrl + s` -> for split in half by portrait mode.
+    *   `ctrl + h/j/k/l` -> move between your splited tabs (**left/down/up/right**)
+    *   `space + ESC` -> clear search highlight
+
+2.  **Advanced Editing Keybindings**:
+    *   `Q` -> Reformat selected text or current paragraph (uses `gq`).
+    *   `Ctrl-U` (in Insert Mode) -> Deletes text from the cursor to the beginning of the line, but now each deletion is a separate undoable action.
+
+3.  **Utility Keybindings**:
+    *   `:TOhtml` -> Convert the current buffer to an HTML file (useful for sharing code with syntax highlighting).
+
+4.  **Spell Checking Keybindings** (only active if spell checking is enabled - see Advanced Features):
+    *   `<leader>sn` -> Move to the next misspelled word.
+    *   `<leader>sp` -> Move to the previous misspelled word.
+    *   `<leader>sa` -> Add the word under the cursor to the spell file.
+    *   `<leader>sw` -> Mark the word under the cursor as a spelling mistake.
+    *   `<leader>ss` -> Show spelling suggestions for the word under the cursor.
+
+5.  **Competitive Programming Keybindings**:
+    *   **Compile and Run**:
+        *   `<leader>c` -> Compiles the current file (C++, Java). Python is interpreted, so it will just show a message.
+        *   `<leader>r` -> Runs the compiled/interpreted program in a new terminal window.
+        *   `<leader>cr` -> Compiles (if applicable) and then runs the program.
+    *   **Test Case Handling**:
+        *   `<leader>ti` -> Creates an empty `input.txt` file in the current directory.
+        *   `<leader>te` -> Creates an empty `expected_output.txt` file in the current directory.
+        *   `<leader>td` -> Runs your program with `input.txt` as stdin, saves the output to `output.txt`, and opens a diff view with `expected_output.txt`.
 
 ---
 
