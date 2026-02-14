@@ -20,10 +20,10 @@ set smartindent
 set backspace=indent,eol,start
 
 " This is for syntax highlighting
-syntax on
+syntax on 
 
 " This is for colorscheme
-colorscheme torte
+colorscheme pablo 
 
 " Cursor context
 set cursorline
@@ -95,8 +95,8 @@ let g:html_expr_folding = 1
 
 " ===== Spell Checking =====
 " Uncomment the following lines to enable spell checking.
-" set spell
-" set spelllang=en_us
+set spell
+set spelllang=en_us
 
 " ===== Templates =====
 augroup templates
