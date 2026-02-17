@@ -42,7 +42,7 @@ Your `~/.vim/` directory is structured logically:
 
 *   `vimrc`: The main entry point, sourcing all other configuration files.
 *   `options.vim`: Contains all general Vim `set` options, autocommands for templates, and folding configurations.
-*   `keybinds.vim`: Defines all custom key mappings, with `<leader>` set to `space`.
+*   `keybinds.vim`: Defines all custom key mappings, with `space + ` set to `space`.
 *   `statusline.vim`: Defines the appearance and content of your custom status line.
 *   `plugins/`: A directory for self-contained Vim plugins (e.g., `fzf.vim`, `compiler.vim`).
 *   `templates/`: Stores boilerplate code for various languages, automatically inserted into new files.
@@ -112,27 +112,50 @@ This file defines numerous `set` commands to customize Vim's behavior.
 
 ## ⌨️ All Keybindings (`keybinds.vim`):
 
-The `<leader>` key is mapped to `space`. All keybindings are `nnoremap` unless specified.
+The `<leadeer>` key is mapped to `space`. All keybindings are `nnoremap` unless specified.
 
 ### General Navigation & Window Management:
 
-*   `<leader>cd`: Open Vim's built-in file explorer (`:Ex`).
+*   `space + cd`: Open Vim's built-in file explorer (`:Ex`).
 *   `<C-v>`: Split current window vertically.
 *   `<C-s>`: Split current window horizontally.
 *   `<C-h>`: Move focus to the window on the left.
 *   `<C-j>`: Move focus to the window below.
 *   `<C-k>`: Move focus to the window above.
 *   `<C-l>`: Move focus to the window on the right.
-*   `<leader><Esc>`: Clear all current search highlights (`:nohlsearch`).
+*   `space + <Esc>`: Clear all current search highlights (`:nohlsearch`).
 
 ### Fuzzy Finding (FZF Enhancements):
 
-*   `<leader>f`: Fuzzy find files in the current project (`:Files`).
-*   `<leader>b`: Fuzzy find and switch between open buffers (`:Buffers`).
-*   `<leader>h`: Fuzzy find and execute commands from history (`:History`).
+*   `space + f`: Fuzzy find files in the current project (`:Files`).
+*   `space + b`: Fuzzy find and switch between open buffers (`:Buffers`).
+*   `space + h`: Fuzzy find and execute commands from history (`:History`).
 
-> **Note on FZF Commands (`<leader>a`, `<leader>l`, `<leader>gc`):**
-> Due to the preference of not installing external plugins from GitHub, advanced FZF commands like `:Ag` (project-wide text search), `:Lines` (search in buffers), and `:Commits` (git commit history) are not available in this configuration. The keybindings for these commands (`<leader>a`, `<leader>l`, `<leader>gc`) have been removed from `keybinds.vim` to avoid confusion.
+> **Note on FZF Commands (`space + a`, `space + l`, `space + gc`):**
+> Due to the preference of not installing external plugins from GitHub, advanced FZF commands like `:Ag` (project-wide text search), `:Lines` (search in buffers), and `:Commits` (git commit history) are not available in this configuration. The keybindings for these commands (`space + a`, `space + l`, `space + gc`) have been removed from `keybinds.vim` to avoid confusion.
+
+### Vim-Native Search Alternatives (No Plugins):
+
+Since advanced FZF commands are not available, here are some Vim-native ways to achieve similar search functionality:
+
+*   **Project-Wide Search (`:grep` or `:vimgrep`):**
+    *   **Using `grep`:** Vim's `:grep` command can execute external `grep` (or `ripgrep` if configured) and populate the quickfix list.
+        1.  **Configure `grepprg` (optional but recommended):** Add `set grepprg=rg\ --vimgrep` to your `options.vim` if you have `ripgrep` installed for faster searches.
+        2.  **Execute search:** `:grep <pattern> <files>` (e.g., `:grep -r "myFunction" .` to search recursively in current directory).
+        3.  **Navigate results:** Use Quickfix Navigation keybindings (`space + co`, `space + cn`, `space + cp`).
+    *   **Using `vimgrep`:** Vim's built-in `:vimgrep` command searches within Vim buffers or files and populates the quickfix list.
+        1.  **Execute search:** `:vimgrep /<pattern>/gj <files>` (e.g., `:vimgrep /myFunction/gj **/*.py` to search Python files recursively). The `j` flag jumps to the first match, `g` finds all matches on a line.
+        2.  **Navigate results:** Same Quickfix Navigation keybindings.
+
+*   **Searching Lines in Open Buffers:**
+    *   Use the `:bufdo` command to execute a search across all currently loaded buffers.
+        *   `:bufdo /<pattern>/e` will jump to the first occurrence of `<pattern>` in each buffer.
+        *   `:bufdo %s/<pattern>//gn` will show the count of matches in each buffer without changing the buffer content. You can then use the quickfix list to see the matches if you combine it with `caddbuffer`. (This is more advanced)
+
+*   **Viewing Git Commits:**
+    *   You can directly open a terminal split and run `git log`.
+        *   `space + gs` already opens `git status`. From there, you can type `git log`
+        *   Alternatively, you can create a specific keybinding (e.g., `space + gl`) to open `git log` in a new terminal split, similar to how `git status` is mapped.
 
 
 ### Autocompletion:
@@ -142,44 +165,44 @@ The `<leader>` key is mapped to `space`. All keybindings are `nnoremap` unless s
 
 ### Code Folding:
 
-*   `<leader>ft`: Toggle a fold (open/close) under the cursor (`za`).
-*   `<leader>fo`: Open all folds in the current file (`zR`).
-*   `<leader>fc`: Close all folds in the current file (`zM`).
+*   `space + ft`: Toggle a fold (open/close) under the cursor (`za`).
+*   `space + fo`: Open all folds in the current file (`zR`).
+*   `space + fc`: Close all folds in the current file (`zM`).
 
 ### Session Management:
 
-*   `<leader>ss`: Save the current session (open files, window layout, etc.) to a file named `Session.vim` in the current directory (`:mksession! Session.vim`).
-*   `<leader>sl`: Load a session from a file named `Session.vim` in the current directory (`:source Session.vim`).
+*   `space + ss`: Save the current session (open files, window layout, etc.) to a file named `Session.vim` in the current directory (`:mksession! Session.vim`).
+*   `space + sl`: Load a session from a file named `Session.vim` in the current directory (`:source Session.vim`).
 
 ### Quickfix List Navigation:
 
-*   `<leader>co`: Open the quickfix window to view a list of errors/warnings.
-*   `<leader>cc`: Close the quickfix window.
-*   `<leader>cn`: Jump to the next item in the quickfix list.
-*   `<leader>cp`: Jump to the previous item in the quickfix list.
+*   `space + co`: Open the quickfix window to view a list of errors/warnings.
+*   `space + cc`: Close the quickfix window.
+*   `space + cn`: Jump to the next item in the quickfix list.
+*   `space + cp`: Jump to the previous item in the quickfix list.
 
 ### Spell Checking:
 
-*   `<leader>sn`: Move to the next misspelled word (`]s`).
-*   `<leader>sp`: Move to the previous misspelled word (`[s`).
-*   `<leader>sa`: Add the word under the cursor to the spell file (`zg`).
-*   `<leader>sw`: Mark the word under the cursor as a spelling mistake (`zw`).
-*   `<leader>ss`: Show spelling suggestions for the word under the cursor (`z=`).
+*   `space + sn`: Move to the next misspelled word (`]s`).
+*   `space + sp`: Move to the previous misspelled word (`[s`).
+*   `space + sa`: Add the word under the cursor to the spell file (`zg`).
+*   `space + sw`: Mark the word under the cursor as a spelling mistake (`zw`).
+*   `space + ss`: Show spelling suggestions for the word under the cursor (`z=`).
 
 ### Competitive Programming:
 
-*   `<leader>c`: Compiles the current file (`:Compile`).
-*   `<leader>r`: Runs the compiled/interpreted program in a new terminal (`:Run`).
-*   `<leader>cr`: Compiles (if applicable) and then runs the program (`:CompileAndRun`).
-*   `<leader>ti`: Creates an empty `input.txt` file in the current directory (`:CreateInputFile`).
-*   `<leader>te`: Creates an empty `expected_output.txt` file in the current directory (`:CreateExpectedOutputFile`).
-*   `<leader>td`: Runs your program with `input.txt` as stdin, saves output to `output.txt`, and opens a diff view with `expected_output.txt` (`:RunAndDiff`).
+*   `space + c`: Compiles the current file (`:Compile`).
+*   `space + r`: Runs the compiled/interpreted program in a new terminal (`:Run`).
+*   `space + cr`: Compiles (if applicable) and then runs the program (`:CompileAndRun`).
+*   `space + ti`: Creates an empty `input.txt` file in the current directory (`:CreateInputFile`).
+*   `space + te`: Creates an empty `expected_output.txt` file in the current directory (`:CreateExpectedOutputFile`).
+*   `space + td`: Runs your program with `input.txt` as stdin, saves output to `output.txt`, and opens a diff view with `expected_output.txt` (`:RunAndDiff`).
 
 ### Git Integration:
 
-*   `<leader>gs`: Show `git status` output in a new horizontal split terminal (`:split | terminal git status`).
-*   `<leader>gd`: Show `git diff` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git diff %`).
-*   `<leader>gb`: Show `git blame` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git blame %`).
+*   `space + gs`: Show `git status` output in a new horizontal split terminal (`:split | terminal git status`).
+*   `space + gd`: Show `git diff` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git diff %`).
+*   `space + gb`: Show `git blame` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git blame %`).
 
 ### Utility Keybindings:
 
@@ -236,7 +259,7 @@ This configuration leverages Vim's built-in filetype plugins to provide tailored
     *   **Functionality**: Check your Python code for errors and style issues using `flake8`.
     *   **Setup**: Ensure `flake8` is installed (`pip install flake8`).
     *   **Usage**: While in a Python file, run the command `:make`. This executes `flake8 %` and populates the quickfix list.
-    *   **Navigation**: Use **Quickfix Navigation** keybindings (`<leader>co` to open, `<leader>cn` to jump to next error) to navigate issues.
+    *   **Navigation**: Use **Quickfix Navigation** keybindings (`space + co` to open, `space + cn` to jump to next error) to navigate issues.
 *   **Omni Completion**: Use `<C-x C-o>` in insert mode for intelligent code completion.
 *   **Navigation**: `]]` and `[[` jump between classes/functions; `]m` and `[m` jump to next/previous methods.
 *   **Documentation**: Press `K` on a keyword to open its documentation (`pydoc`).
