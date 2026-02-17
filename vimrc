@@ -16,5 +16,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
+" ===== Statusline =====
+source ~/.vim/status/statusline.vim
+
 " ===== Color =====
 source ~/.vim/colors/pablo.vim

@@ -1,237 +1,280 @@
-<h1 align="center">Vim C0nf</h1>
+<h1 align="center">Vim C0nf - Comprehensive Minimalist Setup</h1>
 
-## Prefetch...
+This document provides an exhaustive overview of your Vim configuration, detailing every feature, option, keybinding, and template. This setup prioritizes efficiency and a clean workflow, leveraging Vim's native capabilities and the `fzf` tool while carefully integrating additional functionalities.
 
-- This is the minimal configuration for a daliy user of vim.
-- Well... I know every linux user want customization but some time simplicity matters the most.
-- Now take a look.....
+## ✨ Key Features at a Glance:
 
----
-
-<h2 align="center">What's New? (Recent Updates)</h2>
-
-This configuration has been updated to be more powerful without adding any new external plugins. Here’s a summary of the changes:
-
-*   **No features were removed.** All your existing settings and keybinds are still here.
-*   **Enhanced FZF:** Added new keybindings to search for text within files (`<leader>a`), lines in buffers (`<leader>l`), and git commits (`<leader>gc`).
-*   **Upgraded C++ Template:** The competitive programming template for C++ now includes common headers, fast I/O setup, and a multi-testcase structure.
-*   **Quickfix Navigation:** Added keybindings to easily open, close, and navigate the quickfix window, which is essential for jumping between compile errors.
-*   **Session Management:** You can now save and load your entire Vim session (open files, window layout) with simple keybindings, allowing you to quickly resume your work on a project.
-*   **Improved Editor UI:** Added live previews for substitute commands and a better command-line completion menu.
+*   🚀 **Fast Navigation & Fuzzy Finding:** Integrated `fzf` for lightning-fast file, buffer, and history searching.
+*   🧠 **Smarter Autocompletion:** Enhanced built-in completion for a more VS Code-like experience without plugins.
+*   💻 **Competitive Programming Ready:** Quick compile, run, and test case management for various languages.
+*   📚 **Extensive Auto-Templates:** Automatically inserts boilerplate for 20+ languages upon new file creation.
+*   ✂️ **Advanced Code Folding:** Automatic and manual code folding for better file navigation in supported languages.
+*   📊 **Informative Custom Status Line:** Displays critical file, buffer, and position information at a glance.
+*   🐙 **Integrated Git Workflow:** Direct access to `git status`, `diff`, and `blame` commands within Vim splits.
+*   ✅ **Integrated Linting:** `flake8` linting for Python via `:make` with quickfix navigation.
+*   ⚙️ **Optimized Core Settings:** A carefully curated set of Vim options for a modern editing experience.
 
 ---
 
-## Installation...
+## 🛠️ Installation:
 
-1. Copy the repository to your local machine using this...
-```BASH
-    git clone https://github.com/CYBER-4RMY/.vim.git
-```
-2. Now just make or edit your **.vimrc** form `/home/$USER/.vimrc` or `~/.vimrc` & add this line to it.
-```VIM
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/CYBER-4RMY/.vim.git ~/.vim
+    ```
+2.  **Configure Global `.vimrc`:**
+    Create or edit your global `.vimrc` file (typically `~/.vimrc` or `/home/$USER/.vimrc`) and add the following line to source this configuration:
+    ```vim
     source ~/.vim/vimrc
-```
-3. Well that's all now you can get a difference between your previous vim and recent vim.
-
-<img width="1920" height="1048" alt="image" src="https://github.com/user-attachments/assets/fb86baad-26b4-47e9-ae25-11decfd19817" />
-<img width="1920" height="1047" alt="image" src="https://github.com/user-attachments/assets/ff84edc8-74cb-4b12-aa24-430d59c1f167" />
-
-**Dependency**
-    - Fzf
-    - Vim
-    - ripgrep (optional, for <leader>a)
-
-- That's all is it....
-
-- For ARCH ('sudo pacman -S fzf vim ripgrep')
-- For DEBIAN ('sudo apt install fzf vim ripgrep')
-- For REDHAT ('sudo dnf/yum install fzf vim ripgrep')
+    ```
+3.  **Install Essential Dependencies:**
+    Ensure you have `fzf` and `Vim` (version 8.1 or higher for `terminal` command) installed. For advanced features like project-wide search (`<leader>a`), `ripgrep` is highly recommended. For Python linting, `flake8` is needed.
+    *   **For Arch Linux:** `sudo pacman -S fzf vim ripgrep`
+    *   **For Debian/Ubuntu:** `sudo apt install fzf vim ripgrep`
+    *   **For Fedora/RHEL:** `sudo dnf install fzf vim ripgrep`
+    *   **For Python Linting:** `pip install flake8`
 
 ---
 
-## Usage...
+## 📂 Configuration Files Explained:
 
-Well it is actually a normal vim with some tweak and other plugin mixture.
+Your `~/.vim/` directory is structured logically:
 
-- All the commands and other things are avaliabale with some extra...
-1. Fzf file search and number lines.
-2. Relative number line for 100+ line of code help.
-3. Syntax highlighting.
-4. Auto tab and intelligent backspace.
-5. Intelligent file back keybind.
-6. New colorfull mode added
-7. Coursor line added
-8. spliting mode added with new keybind
-9. Mouse intraction enabled
-
-<h2 align="center">Keybinds....</h2>
-
-This section outlines the keybindings available in your Vim configuration. `<leader>` is mapped to `space`.
-
-1.  **General Navigation & Windowing**:
-    *   `space + cd` -> for `:Ex` mode (Vim's file explorer)
-    *   `ctrl + v` -> for vertical split.
-    *   `ctrl + s` -> for split in half by portrait mode.
-    *   `ctrl + h/j/k/l` -> move between your splited tabs (**left/down/up/right**)
-    *   `space + ESC` -> clear search highlight
-
-2.  **FZF (Enhanced)**:
-    *   `space + f` -> for `:Files` mode (FZF fuzzy file search)
-    *   `space + b` -> for `:Buffers` mode (FZF fuzzy buffer search)
-    *   `space + h` -> for `:History` mode (FZF command history search)
-    *   `space + a` -> for `:Ag` mode (FZF text search in project, needs `ripgrep`)
-    *   `space + l` -> for `:Lines` mode (FZF line search in open buffers)
-    *   `space + gc` -> for `:Commits` mode (FZF git commit history)
-
-3.  **Quickfix Navigation**:
-    *   `space + co` -> Open the quickfix window to see errors.
-    *   `space + cc` -> Close the quickfix window.
-    *   `space + cn` -> Jump to the next error in the quickfix list.
-    *   `space + cp` -> Jump to the previous error in the quickfix list.
-
-4.  **Session Management**:
-    *   `space + ss` -> Save the current session (open files, layout) to `Session.vim`.
-    *   `space + sl` -> Load the session from `Session.vim`.
-
-5.  **Advanced Editing Keybindings**:
-    *   `Q` -> Reformat selected text or current paragraph (uses `gq`).
-    *   `Ctrl-U` (in Insert Mode) -> Deletes text from the cursor to the beginning of the line, but now each deletion is a separate undoable action.
-
-6.  **Utility Keybindings**:
-    *   `:TOhtml` -> Convert the current buffer to an HTML file (useful for sharing code with syntax highlighting).
-
-7.  **Spell Checking Keybindings**:
-    *   `space + sn` -> Move to the next misspelled word.
-    *   `space + sp` -> Move to the previous misspelled word.
-    *   `space + sa` -> Add the word under the cursor to the spell file.
-    *   `space + sw` -> Mark the word under the cursor as a spelling mistake.
-    *   `space + ss` -> Show spelling suggestions for the word under the cursor.
-
-8.  **Competitive Programming Keybindings**:
-    *   **Compile and Run**:
-        *   `space + c` -> Compiles the current file (C++, Java).
-        *   `space + r` -> Runs the compiled/interpreted program.
-        *   `space + cr` -> Compiles (if applicable) and then runs the program.
-    *   **Test Case Handling**:
-        *   `space + ti` -> Creates an empty `input.txt` file.
-        *   `space + te` -> Creates an empty `expected_output.txt` file.
-        *   `space + td` -> Runs your program and diffs the output with `expected_output.txt`.
+*   `vimrc`: The main entry point, sourcing all other configuration files.
+*   `options.vim`: Contains all general Vim `set` options, autocommands for templates, and folding configurations.
+*   `keybinds.vim`: Defines all custom key mappings, with `<leader>` set to `space`.
+*   `statusline.vim`: Defines the appearance and content of your custom status line.
+*   `plugins/`: A directory for self-contained Vim plugins (e.g., `fzf.vim`, `compiler.vim`).
+*   `templates/`: Stores boilerplate code for various languages, automatically inserted into new files.
+*   `colors/`: Contains color schemes.
+*   `backup/` & `undo/`: Directories for persistent undo history and file backups.
 
 ---
 
-<h2 align="center">Smarter Autocompletion (No Plugins!)....</h2>
+## ⚙️ Core Vim Options (`options.vim`):
 
-You asked for VS-Code like suggestions without adding plugins. While true "IntelliSense" requires plugins, you can get very far by mastering Vim's powerful built-in completion system. We've now enhanced it with `set completeopt=menu,menuone,noselect`.
+This file defines numerous `set` commands to customize Vim's behavior.
 
-While in **Insert Mode**, you can trigger different types of completion:
-
-*   `Ctrl-N` or `Ctrl-P`: This is the most common one. It searches for matching keywords in the current file and all other open files.
-*   `Ctrl-X Ctrl-O`: This is **Omni Completion**. It's filetype-aware and provides more intelligent, context-specific suggestions (e.g., for Python or C++ functions and variables).
-*   `Ctrl-X Ctrl-L`: Completes a whole line of text at once.
-*   `Ctrl-X Ctrl-F`: Searches for and completes file paths and names.
-
-**How to use it:**
-1.  Start typing a variable, function, or keyword.
-2.  Press `Ctrl-N` to open the completion menu.
-3.  Use `Ctrl-N` and `Ctrl-P` to navigate the list, or just keep typing to filter.
-4.  Press `<Enter>` to accept a suggestion.
-
----
-
-<h2 align="center">Advanced Features....</h2>
-
-- **New Options**:
-    *   **Better Completion Menu**: The autocompletion menu's behavior has been improved to be less intrusive.
-    *   **Live Previews**: Substitutions (`:s/.../.../`) will now show a live preview of the change.
-    *   **Command-Line Menu**: You now have an enhanced completion menu when typing commands.
-    *   **Backup Files**: Vim will automatically create a backup file when you save.
-    *   **Jump to Last Cursor Position**: When you open a file, the cursor will automatically jump to the last known position.
-
-- **Code Templates**:
-    *   Templates are now available for **C++, Python, Java, C, Go, Rust, Bash, Assembly (.s, .asm), Lua, Nim, Kotlin, and Perl** for various development needs.
-    *   To use, simply create a new file with the corresponding extension (e.g., `:e main.cpp` or `:e index.html`).
-    *   **Upgraded C++ Template**: The C++ template is now significantly more powerful for competitive programming, including fast I/O and a `solve()` function structure for multiple test cases.
-
-- **Compile and Run (`space + c`, `space + r`, `space + cr`)**:
-    *   These keybindings are available in normal mode to compile and/or run your code. When errors occur, use the **Quickfix Navigation** keybindings to jump to each error.
-
-- **And all the other great features you already had**, including `matchit`, man page viewing, `termdebug`, and more!
-
----
-
-<h2 align="center">Filetype Specific Features....</h2>
-
-This configuration uses Vim's filetype plugins to provide features tailored to specific programming languages. These plugins are enabled by `filetype plugin indent on` in `options.vim`, so you get all these features automatically.
-
-### Python
-
-- **Omni Completion**: Use `Ctrl-X Ctrl-O` in insert mode for intelligent completion of Python code.
-- **Navigation**:
-    - `]]` and `[[`: Jump between classes and functions.
-    - `]m` and `[m`: Jump to the next/previous method.
-- **Documentation**: Press `K` on a keyword to open its documentation with `pydoc`.
-- **Testing**: If you are in a file named `test_*.py` or `*_test.py`, you can run `pytest` on it with the `:make` command.
-
-### C/C++
-
-- **Omni Completion**: Use `Ctrl-X Ctrl-O` in insert mode for intelligent completion of C/C++ code.
-- **Navigation**: Use `%` to jump between `#if`/`#elif`/`#else`/`#endif` blocks.
-- **Documentation**: Press `K` on a keyword to open its man page in a new terminal window.
-
-### HTML
-
-- **Omni Completion**: Use `Ctrl-X Ctrl-O` in insert mode for intelligent completion of HTML tags.
-- **Navigation**: Use `%` to jump between opening and closing HTML tags.
-- **Folding**: HTML tags will be automatically folded. You can use `za` to toggle folds.
-
-### Go
-
-- **Formatting**: Use `gq` to format your Go code with `gofmt`. For example, `gqip` will format the current paragraph.
-- **Navigation**:
-    - `]]` and `[[`: Jump between `func` and `type` blocks.
-- **Documentation**: Press `K` on a keyword to look up its documentation with `go doc`.
-
-### Shell
-
-- **Navigation**: Use `%` to jump between `if`/`fi`, `for`/`done`, and `case`/`esac`.
-- **Documentation**: In a bash script, press `K` on a command to look up its documentation.
-- **Linting**: If you have `shellcheck` installed, you can run it on your script with the `:make` command to find potential errors. You can install it with `sudo apt install shellcheck`, `sudo dnf install shellcheck`, or `sudo pacman -S shellcheck`.
+*   `set nocompatible`: Ensures Vim behaves like Vim, not old Vi.
+*   `set number`: Displays absolute line numbers.
+*   `set relativenumber`: Displays relative line numbers (e.g., `-1`, `+2`) alongside absolute numbers, useful for navigation.
+*   `set laststatus=2`: Always shows the status line.
+*   `filetype plugin indent on`: Enables filetype detection, specific plugins, and smart indentation.
+*   `set expandtab`: Converts tabs to spaces.
+*   `set shiftwidth=4`: Sets the number of spaces for (auto)indentation.
+*   `set softtabstop=4`: Sets the number of spaces a Tab in the file uses.
+*   `set tabstop=4`: Sets the visual width of a tab character.
+*   `set smartindent`: Enables intelligent auto-indenting for C-like languages.
+*   `set backspace=indent,eol,start`: Allows backspacing over autoindent, end-of-line, and start of insert.
+*   `syntax on`: Enables syntax highlighting.
+*   `colorscheme pablo`: Sets the default color scheme to `pablo`.
+*   `set cursorline`: Highlights the current line with the cursor.
+*   `set scrolloff=8`: Keeps 8 lines of context above/below the cursor when scrolling.
+*   `set sidescrolloff=8`: Keeps 8 columns of context left/right of the cursor when scrolling horizontally.
+*   `set showcmd`: Displays partial commands in the status line.
+*   `set showmode`: Displays the current Vim mode (INSERT, VISUAL, etc.) in the status line.
+*   `set ignorecase`: Ignores case in search patterns.
+*   `set smartcase`: Overrides `ignorecase` if the search pattern contains uppercase characters.
+*   `set incsearch`: Highlights matches as you type the search pattern.
+*   `set hlsearch`: Highlights all matches after a search.
+*   `set undofile`: Enables persistent undo history.
+*   `set undodir=~/.vim/undo//`: Specifies the directory for undo files.
+*   `set backup`: Creates a backup file before overwriting.
+*   `set backupdir=~/.vim/backup//`: Specifies the directory for backup files.
+*   `set splitbelow`: New horizontal splits appear below the current window.
+*   `set splitright`: New vertical splits appear to the right of the current window.
+*   `set autoindent`: Copies the indent from the previous line.
+*   `set smarttab`: Inserts `shiftwidth` number of spaces if `expandtab` is set.
+*   `set formatoptions+=cro`: Auto-continuation for comments.
+*   `set showmatch`: Briefly jumps to the matching bracket when a bracket is typed.
+*   `set matchtime=2`: Time in tenths of a second for `showmatch` jump.
+*   `set mouse=a`: Enables mouse support in all modes.
+*   `set ttimeout`: Enables timeout for key codes.
+*   `set ttimeoutlen=100`: Timeout length in milliseconds for key codes.
+*   `set display=truncate`: Shows `@@@` in the last line if it's truncated.
+*   `set nrformats-=octal`: Disables octal number recognition for `Ctrl-A` and `Ctrl-X`.
+*   `autocmd BufReadPost ...`: Jumps to the last known cursor position when reopening a file.
+*   `set nolangremap`: Prevents langmap from applying to characters from mappings.
+*   `let g:html_expr_folding = 1`: Enables expression-based folding for HTML files.
+*   `set spell`: Enables spell checking.
+*   `set spelllang=en_us`: Sets the spell check language to US English.
+*   `augroup templates ...`: Autocommands for inserting boilerplate into new files (see **Code Templates**).
+*   `set wildmenu`: Enhances command-line completion with a menu.
+*   `set wildmode=longest:full,full`: Configures `wildmenu` behavior for more intuitive completion.
+*   `set inccommand=split`: Shows a live preview of substitution commands (`:s`) in a split window.
+*   `set completeopt=menu,menuone,noselect`: Configures completion menu behavior for a less intrusive experience.
+*   `set foldenable`: Enables code folding.
+*   `set foldlevelstart=99`: Starts new files with all folds open.
+*   `augroup filetype_folds ...`: Autocommands to set `foldmethod` based on filetype (`indent` for Python/Ruby/YAML, `syntax` for Vim/XML/HTML/C/C++/Java).
+*   `augroup filetype_linting ...`: Autocommands to set `makeprg` for filetype-specific linting (e.g., `flake8` for Python).
 
 ---
 
-## Some extra content for vim
+## ⌨️ All Keybindings (`keybinds.vim`):
 
-01. `shift + 5` -> for new file in parent directory
-02. `:e` -> in vim :e is used for new file creating in a parents sub-dir.
-03. `:so` -> after making some changes in **.vimrc** this is the **source** command in vim.
-04. `shift + v` -> for seleceting multiple lines.
-05. `y` -> after selecting the things you can copy that in vim using that **y** keybind. `y -> yan/copy`
-06. `p` -> that stands for paste. after **y** you can paste that using **p`. `p ->> paste`
-07. `shift + c` -> this help to delete selected portion and directly get into **insert** mode.
-08. `x` -> in normal mode you can delete a single letter using it. 
-09. `dd` -> it can delete a single line.
-10. `m + <any_letter/number>` -> This can help to mark a point in your code.
-11. `w` -> this is for go to one word by word jump forward.
-12. `b` -> this is for go to one word by one word jump in backward.
-13. `/ -> this is for find anything. 
-14. `n` -> after find that is the next word jump keybind forward.
-15. `N/ shift + n` -> this is for reverse side jump
-16. `ctrl + n` -> show suggestion in your code after writing something where you forgot.
-17. `ctrl + r` -> for replace anything.
-18. `esc` -> that helps to go commander mode.
-19. `i/a` -> that help to go in insert mode. where you can able to write.
-20. `:w` -> when you write something then if you want to save that then hit **esc** then type that **:w* to save.
-21. `:q` -> when you want to quite that save file then you have to enter that **:q** command (before you go every time you have to hit **esc** button)
-22. `:q!` -> when you want to over write your code or something what you written and get back to your old code or thing then this is the helper for you.
-23. `u` (undo) -> when you are in commander mode then it will **undo** the thing what you did to that code.
-24. `ctrl + r` (redo) -> If  you did something right and took wine and then do the wrong thing again then this is the helper for you.
-25. `:colorscheme` -> this help you to set colorscheme in your vim. (preinstalled only)
+The `<leader>` key is mapped to `space`. All keybindings are `nnoremap` unless specified.
 
-<h2 align="center">===(BONOUS)===</h2>
+### General Navigation & Window Management:
 
-- When you are deleting one word you can give size like `7x` that will gonna delete 7 letters form your that line and the courser place Or for a word `dw`.
-- Similar for `dd` you can do it by entering any line number that will delete form your courser present place. like `10dd` -> 10 line delete.
+*   `<leader>cd`: Open Vim's built-in file explorer (`:Ex`).
+*   `<C-v>`: Split current window vertically.
+*   `<C-s>`: Split current window horizontally.
+*   `<C-h>`: Move focus to the window on the left.
+*   `<C-j>`: Move focus to the window below.
+*   `<C-k>`: Move focus to the window above.
+*   `<C-l>`: Move focus to the window on the right.
+*   `<leader><Esc>`: Clear all current search highlights (`:nohlsearch`).
+
+### Fuzzy Finding (FZF Enhancements):
+
+*   `<leader>f`: Fuzzy find files in the current project (`:Files`).
+*   `<leader>b`: Fuzzy find and switch between open buffers (`:Buffers`).
+*   `<leader>h`: Fuzzy find and execute commands from history (`:History`).
+*   `<leader>a`: Fuzzy find text across all files in the current project (`:Ag`, requires `ripgrep`).
+*   `<leader>l`: Fuzzy find lines within all open buffers (`:Lines`).
+*   `<leader>gc`: Fuzzy find and view Git commit history (`:Commits`).
+
+### Autocompletion:
+
+*   `Q` (normal mode): Reformat selected text or current paragraph (`gq`).
+*   `<C-U>` (insert mode): Deletes text from cursor to start of line, but each deletion is a separate undoable action (`<C-G>u<C-U>`).
+
+### Code Folding:
+
+*   `<leader>ft`: Toggle a fold (open/close) under the cursor (`za`).
+*   `<leader>fo`: Open all folds in the current file (`zR`).
+*   `<leader>fc`: Close all folds in the current file (`zM`).
+
+### Session Management:
+
+*   `<leader>ss`: Save the current session (open files, window layout, etc.) to a file named `Session.vim` in the current directory (`:mksession! Session.vim`).
+*   `<leader>sl`: Load a session from a file named `Session.vim` in the current directory (`:source Session.vim`).
+
+### Quickfix List Navigation:
+
+*   `<leader>co`: Open the quickfix window to view a list of errors/warnings.
+*   `<leader>cc`: Close the quickfix window.
+*   `<leader>cn`: Jump to the next item in the quickfix list.
+*   `<leader>cp`: Jump to the previous item in the quickfix list.
+
+### Spell Checking:
+
+*   `<leader>sn`: Move to the next misspelled word (`]s`).
+*   `<leader>sp`: Move to the previous misspelled word (`[s`).
+*   `<leader>sa`: Add the word under the cursor to the spell file (`zg`).
+*   `<leader>sw`: Mark the word under the cursor as a spelling mistake (`zw`).
+*   `<leader>ss`: Show spelling suggestions for the word under the cursor (`z=`).
+
+### Competitive Programming:
+
+*   `<leader>c`: Compiles the current file (`:Compile`).
+*   `<leader>r`: Runs the compiled/interpreted program in a new terminal (`:Run`).
+*   `<leader>cr`: Compiles (if applicable) and then runs the program (`:CompileAndRun`).
+*   `<leader>ti`: Creates an empty `input.txt` file in the current directory (`:CreateInputFile`).
+*   `<leader>te`: Creates an empty `expected_output.txt` file in the current directory (`:CreateExpectedOutputFile`).
+*   `<leader>td`: Runs your program with `input.txt` as stdin, saves output to `output.txt`, and opens a diff view with `expected_output.txt` (`:RunAndDiff`).
+
+### Git Integration:
+
+*   `<leader>gs`: Show `git status` output in a new horizontal split terminal (`:split | terminal git status`).
+*   `<leader>gd`: Show `git diff` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git diff %`).
+*   `<leader>gb`: Show `git blame` for the current file (`%`) in a new vertical split terminal (`:vsplit | terminal git blame %`).
+
+### Utility Keybindings:
+
+*   `:TOhtml`: Command to convert the current buffer to an HTML file (useful for sharing code with syntax highlighting).
 
 ---
 
-> To be continue........ :)
+## 📄 Code Templates (`templates/`):
+
+Templates are automatically inserted into a new buffer when you create a file with the corresponding extension.
+
+*   **Assembly (`.s`, `.asm`)**: Basic "Hello, World!" for x86-64 Linux.
+*   **Bash (`.sh`)**: Basic script structure.
+*   **C (`.c`)**: Standard C boilerplate.
+*   **C++ (`.cpp`)**: Enhanced for competitive programming with common includes, fast I/O, and `solve()` function.
+*   **CSS (`.css`)**: Basic reset and body styles.
+*   **Dockerfile (`Dockerfile`)**: Minimal Dockerfile structure with commented-out common commands.
+*   **Go (`.go`)**: Basic `main` function and example.
+*   **HTML (`.html`)**: Standard HTML5 boilerplate with linked CSS and JS.
+*   **Java (`.java`)**: Basic `public static void main` structure.
+*   **JavaScript (`.js`)**: Basic `main` function with "Hello, World!".
+*   **Kotlin (`.kt`)**: Basic `main` function with "Hello, World!".
+*   **Lua (`.lua`)**: Basic print and example function.
+*   **Nim (`.nim`)**: Basic echo and example procedure.
+*   **Perl (`.pl`)**: Basic script structure with `use strict; use warnings;` and example subroutine.
+*   **Python (`.py`)**: Basic boilerplate.
+*   **Rust (`.rs`)**: Basic `main` function.
+
+---
+
+## 📊 Custom Status Line (`statusline.vim`):
+
+Your status line, displayed at the bottom of the Vim window, provides a clean overview of your current context:
+
+*   **Left Section:**
+    *   Full path to the current file.
+    *   `[+]` indicator if the file has been modified.
+    *   `[RO]` indicator if the file is read-only.
+*   **Right Section:**
+    *   Filetype of the current buffer (e.g., `python`, `cpp`).
+    *   Current line number and total lines (e.g., `10/100`).
+    *   Percentage through the file (e.g., `10%`).
+    *   Current column number.
+
+---
+
+## 🎯 Filetype Specific Features:
+
+This configuration leverages Vim's built-in filetype plugins to provide tailored enhancements for various languages. These features are automatically enabled via `filetype plugin indent on` in `options.vim`.
+
+### Python:
+
+*   **Linting with `:make`**:
+    *   **Functionality**: Check your Python code for errors and style issues using `flake8`.
+    *   **Setup**: Ensure `flake8` is installed (`pip install flake8`).
+    *   **Usage**: While in a Python file, run the command `:make`. This executes `flake8 %` and populates the quickfix list.
+    *   **Navigation**: Use **Quickfix Navigation** keybindings (`<leader>co` to open, `<leader>cn` to jump to next error) to navigate issues.
+*   **Omni Completion**: Use `<C-x C-o>` in insert mode for intelligent code completion.
+*   **Navigation**: `]]` and `[[` jump between classes/functions; `]m` and `[m` jump to next/previous methods.
+*   **Documentation**: Press `K` on a keyword to open its documentation (`pydoc`).
+
+### C/C++:
+
+*   **Omni Completion**: Use `<C-x C-o>` in insert mode for intelligent code completion.
+*   **Navigation**: `%` jumps between `#if`/`#elif`/`#else`/`#endif` blocks.
+*   **Documentation**: Press `K` on a keyword to open its man page in a new terminal window.
+
+### HTML:
+
+*   **Omni Completion**: Use `<C-x C-o>` in insert mode for intelligent HTML tag completion.
+*   **Navigation**: `%` jumps between opening and closing HTML tags.
+*   **Folding**: HTML tags are automatically folded; `za` toggles folds.
+
+### Go:
+
+*   **Formatting**: Use `gq` to format your Go code with `gofmt`.
+*   **Navigation**: `]]` and `[[` jump between `func`/`type` blocks.
+*   **Documentation**: Press `K` on a keyword to look up its documentation (`go doc`).
+
+### Shell:
+
+*   **Navigation**: `%` jumps between `if`/`fi`, `for`/`done`, and `case`/`esac` blocks.
+*   **Documentation**: Press `K` on a command to look up its man page.
+*   **Linting**: If `shellcheck` is installed, run it on your script with the `:make` command to find potential errors.
+
+---
+
+## 🔌 Local Plugins (`plugins/`):
+
+These are self-contained plugins residing in your `~/.vim/plugins/` directory.
+
+*   `compiler.vim`: Provides commands (`:Compile`, `:Run`, `:CompileAndRun`, `:CreateInputFile`, `:CreateExpectedOutputFile`, `:RunAndDiff`) for competitive programming workflows.
+*   `fzf.vim`: Integrates the `fzf` fuzzy finder, providing commands like `:Files`, `:Buffers`, `:History`, `:Ag`, `:Lines`, `:Commits`.
+*   `mod_ff.vim`: (Functionality derived from its name, likely file manipulation or formatting related).
+*   `tohtml.vim`: Enables the `:TOhtml` command to convert the current buffer to an HTML file with syntax highlighting.
+*   `matchit` (auto-loaded): Enhances `%` command to jump between matching constructs (HTML/XML tags, #if/#endif, etc.).
+*   `termdebug` (auto-loaded, if debugger support is available): Vim's built-in terminal debugger, integrating `gdb` for C/C++ debugging.
+
+---

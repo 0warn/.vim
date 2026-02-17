@@ -84,3 +84,23 @@ nnoremap <leader>cp :cprev<CR>
 nnoremap <leader>ss :mksession! Session.vim<CR>
 nnoremap <leader>sl :source Session.vim<CR>
 
+
+
+" ===== Code Folding =====
+" Toggle a fold under the cursor
+nnoremap <leader>ft za
+" Open all folds
+nnoremap <leader>fo zR
+" Close all folds
+nnoremap <leader>fc zM
+
+
+
+" ===== Git Integration =====
+" Show git status in a new horizontal split
+nnoremap <leader>gs :split \| terminal git status<CR>
+" Show git diff for the current file in a new vertical split
+nnoremap <leader>gd :vsplit \| terminal git diff %<CR>
+" Show git blame for the current file in a new vertical split
+nnoremap <leader>gb :vsplit \| terminal git blame %<CR>
+

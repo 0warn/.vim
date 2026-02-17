@@ -133,3 +133,29 @@ set wildmode=longest:full,full
 
 " Better completion menu behavior
 set completeopt=menu,menuone,noselect
+
+
+" ===== Code Folding Settings =====
+" Enable code folding
+set foldenable
+" Start with all folds open
+set foldlevelstart=99
+
+" Set fold method based on filetype
+augroup filetype_folds
+  autocmd!
+  " Indent-based folding for Python and similar languages
+  autocmd FileType python,yaml,ruby setlocal foldmethod=indent
+  " Syntax-based folding for Vimscript, XML, etc.
+  autocmd FileType vim,xml,html,c,cpp,java setlocal foldmethod=syntax
+augroup END
+
+
+
+" ===== Integrated Linting Settings =====
+" Set up :make for Python files to use flake8 for linting
+augroup filetype_linting
+  autocmd!
+  autocmd FileType python setlocal makeprg=flake8\ %
+augroup END
+
