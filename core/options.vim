@@ -48,6 +48,10 @@ set undodir=~/.vim/undo//
 set backup
 set backupdir=~/.vim/backup//
 
+" keep a swap file to swap folder
+set swapfile
+set directory=~/.vim/swap//
+
 " Split behavior
 set splitbelow
 set splitright
