@@ -106,7 +106,7 @@ set spelllang=en_us
 " ===== Templates =====
 augroup templates
   autocmd!
-  " For competitive programming
+  " For general programming
   autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
   autocmd BufNewFile *.py 0r ~/.vim/templates/template.py
   autocmd BufNewFile *.java 0r ~/.vim/templates/template.java
@@ -114,11 +114,20 @@ augroup templates
   autocmd BufNewFile *.go 0r ~/.vim/templates/template.go
   autocmd BufNewFile *.rs 0r ~/.vim/templates/template.rs
   autocmd BufNewFile *.sh 0r ~/.vim/templates/template.sh
-  " For web development and Docker
+  autocmd BufNewFile *.ts 0r ~/.vim/templates/template.ts
+  autocmd BufNewFile *.php 0r ~/.vim/templates/template.php
+  autocmd BufNewFile *.rb 0r ~/.vim/templates/template.rb
+  autocmd BufNewFile *.cs 0r ~/.vim/templates/template.cs
+  autocmd BufNewFile *.swift 0r ~/.vim/templates/template.swift
+  " For web development, data, and Docker
   autocmd BufNewFile *.html 0r ~/.vim/templates/template.html
   autocmd BufNewFile *.css 0r ~/.vim/templates/template.css
   autocmd BufNewFile *.js 0r ~/.vim/templates/template.js
   autocmd BufNewFile Dockerfile 0r ~/.vim/templates/template.dockerfile
+  autocmd BufNewFile *.json 0r ~/.vim/templates/template.json
+  autocmd BufNewFile *.yaml,*.yml 0r ~/.vim/templates/template.yaml
+  autocmd BufNewFile *.sql 0r ~/.vim/templates/template.sql
+  autocmd BufNewFile *.md 0r ~/.vim/templates/template.md
   " Additional languages
   autocmd BufNewFile *.s,*.asm 0r ~/.vim/templates/template.asm
   autocmd BufNewFile *.lua 0r ~/.vim/templates/template.lua
@@ -148,10 +157,10 @@ set foldlevelstart=99
 " Set fold method based on filetype
 augroup filetype_folds
   autocmd!
-  " Indent-based folding for Python and similar languages
-  autocmd FileType python,yaml,ruby setlocal foldmethod=indent
-  " Syntax-based folding for Vimscript, XML, etc.
-  autocmd FileType vim,xml,html,c,cpp,java setlocal foldmethod=syntax
+  " Indent-based folding for languages where indentation defines structure
+  autocmd FileType python,yaml,ruby,json,sql setlocal foldmethod=indent
+  " Syntax-based folding for bracket-based languages
+  autocmd FileType vim,xml,html,c,cpp,java,javascript,typescript,php,cs,swift setlocal foldmethod=syntax
 augroup END
 
 

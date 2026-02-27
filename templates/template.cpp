@@ -1,19 +1,8 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
 
-void solve() {
-    // Your code here
-}
+using namespace std;
 
 int main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
-    int t = 1;
-    // std::cin >> t;
-    while (t--) {
-        solve();
-    }
+    // Your code here
     return 0;
 }
